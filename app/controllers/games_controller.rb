@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   def index
+<<<<<<< HEAD
     @user1 = 2
   end
 
@@ -22,4 +23,13 @@ class GamesController < ApplicationController
   def play 
     @user1
   end 
+=======
+  end
+
+  def show
+  end
+
+  def new
+  end
+>>>>>>> df5fadb... generate controller games  with actions index show and new
 end
