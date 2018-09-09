@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get :play
       put :attack_p1
       put :attack_p2
+      put :give_up_p1
+      put :give_up_p2
     end
 
   end
