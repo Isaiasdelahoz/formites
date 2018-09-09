@@ -23,12 +23,14 @@ class GamesController < ApplicationController
   def attack_p1
     @game.hurt_p1
     session[:life_p1] = @game.life_p1
+    session[:turn] = true 
     redirect_to play_games_path
   end
 
   def attack_p2
     @game.hurt_p2
     session[:life_p2] = @game.life_p2
+    session[:turn] = false
     redirect_to play_games_path
   end
 
