@@ -34,6 +34,17 @@ class GamesController < ApplicationController
     redirect_to play_games_path
   end
 
+
+  def give_up_p1
+    session[:life_p1] = 0
+    redirect_to play_games_path
+  end
+
+  def give_up_p2
+    session[:life_p2] = 0
+    redirect_to play_games_path
+  end 
+
   def load_game
     @game = Game.new(session[:life_p1], session[:life_p2])
   end
