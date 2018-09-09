@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :games, only: [:index, :new, :create] do
     collection do
       get :play
-      put :attack
+      put :attack_p1
+      put :attack_p2
     end
 
   end

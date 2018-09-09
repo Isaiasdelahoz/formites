@@ -1,6 +1,8 @@
 require 'game'
 
 class GamesController < ApplicationController
+  before_action :load_game, only: [:attack_p1, :attack_p2]
+
   def index
   end
 
@@ -9,15 +11,28 @@ class GamesController < ApplicationController
 
   def create
     session[:nickname1] = params[:nickname1]
-    session[:nickname1] = params[:nickname2]
-
+    session[:nickname2] = params[:nickname2]
+    session[:life_p1] = 100
+    session[:life_p2] = 100
     redirect_to play_games_path
   end
 
   def play
-    g1 = Game.new(session[:nickname1], session[:nickname2])
   end
   
-  def attack
-  end 
+  def attack_p1
+    @game.hurt_p1
+    session[:life_p1] = @game.life_p1
+    redirect_to play_games_path
+  end
+
+  def attack_p2
+    @game.hurt_p2
+    session[:life_p2] = @game.life_p2
+    redirect_to play_games_path
+  end
+
+  def load_game
+    @game = Game.new(session[:life_p1], session[:life_p2])
+  end
 end

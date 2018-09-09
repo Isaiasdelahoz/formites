@@ -1,2 +1,10 @@
-<h1>This is the game </h1>
-<h1> <%= session[:nickname1] %> este es tu puntaje <%= session[:score_1] %> </h1>
+<h1>Bienvenido al juego formites </h1>
+<h1> <%= session[:nickname1] %> VIDA <%= session[:life_p1] %> </h1>
+<h1> <%= session[:nickname2] %> VIDA <%= session[:life_p2] %> </h1>
+
+
+<%= form_tag("/games/attack_p1", method: "put") do %>
+        <div class="text-right"><%= submit_tag("Atacar #{session[:nickname1]}", class: 'btn btn-primary btn-lg btn-block') %></div>
+<% end %>
+
+
