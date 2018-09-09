@@ -11,7 +11,7 @@ class GamesController < ApplicationController
     session[:nickname1] = params[:nickname1]
     session[:nickname1] = params[:nickname2]
 
-    redirect_to games_play_path
+    redirect_to play_games_path
   end
 
   def play
