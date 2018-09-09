@@ -1,10 +1,16 @@
 <h1>Bienvenido al juego formites </h1>
 <h1> <%= session[:nickname1] %> VIDA <%= session[:life_p1] %> </h1>
 <h1> <%= session[:nickname2] %> VIDA <%= session[:life_p2] %> </h1>
+<% if session[:turn] %>
+<% @turn = "/games/attack_p2" %>
+<% @player = session[:nickname1] %>
+<% else %>
+<% @turn = "/games/attack_p1" %>
+<% @player = session[:nickname2] %>
+<% end %>
 
-
-<%= form_tag("/games/attack_p1", method: "put") do %>
-        <div class="text-right"><%= submit_tag("Atacar #{session[:nickname1]}", class: 'btn btn-primary btn-lg btn-block') %></div>
+<%= form_tag(@turn, method: "put") do %>
+  <div class="text-right"><%= submit_tag("Es tu turno #{@player} ¡ataca!", class: 'btn btn-primary btn-lg btn-block') %></div>
 <% end %>
 
 
