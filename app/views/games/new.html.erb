@@ -1,2 +1,19 @@
-<h1>Games#new</h1>
-<p>Find me in app/views/games/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1>Ingresar</h1>
+      <%= form_tag("/games", method: "post") do %>
+        <div class="form-group">
+          <%= label_tag(:nickname1, "Jugador 1") %>
+          <%= text_field_tag(:nickname1, nil, class: 'form-control input-lg') %>
+        </div>
+        <div class="form-group">
+          <%= label_tag(:nickname2, "Jugador 2") %>
+          <%= text_field_tag(:nickname2, nil, class: 'form-control input-lg') %>
+        </div>
+        
+        <div class="text-right"><%= submit_tag("Jugar", class: 'btn btn-primary btn-lg btn-block') %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
