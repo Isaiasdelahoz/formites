@@ -20,7 +20,7 @@ class GamesController < ApplicationController
     @user1.score = @user1.score + 1
     @user1.save
     @user2 = User.find_or_initialize_by(nickname: session[:nickname2])
-    @user1.score = @user1.score + 1
+    @user2.score = @user2.score + 1
     @user2.save
     redirect_to play_games_path
   end
