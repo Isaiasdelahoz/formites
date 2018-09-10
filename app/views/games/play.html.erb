@@ -1,28 +1,72 @@
-<h1>Bienvenido al juego formites </h1>
-<h1> <%= session[:nickname1] %> VIDA <%= session[:life_p1] %> </h1>
-<h1> <%= session[:nickname2] %> VIDA <%= session[:life_p2] %> </h1>
+<h1>Buena suerte! </h1>
+<%- if @winner.blank? %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            <h1>
+              <%= session[:nickname1] %>
+            </h1>
+          </div>
+          <div>
+            <h1> VIDA
+              <%= session[:life_p1] %>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            <h1>
+              <%= session[:nickname2] %>
+            </h1>
+          </div>
+          <div>
+            <h1> VIDA
+              <%= session[:life_p2] %>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<% if session[:turn] %>
-<% @turn = "/games/attack_p2" %>
-<% @give_up = "/games/give_up_p1" %>
-<% @player = session[:nickname1] %>
-  <% if session[:life_p1] <= 0 %>
-    <h2>la victoria es tuya <%= session[:nickname2] %> <span class="glyphicon glyphicon-flag" aria-hidden="true"></h2>
-  <% end %> 
-<% else %>
-<% @turn = "/games/attack_p1" %>
-<% @give_up = "/games/give_up_p2" %>
-<% @player = session[:nickname2] %>
-  <% if session[:life_p2] <= 0 %>
-    <h2>la victoria es tuya <%= session[:nickname1] %> <span class="glyphicon glyphicon-flag" aria-hidden="true"></span></h2>
-  <% end %>
-<% end %>
-
-<%= form_tag(@turn, method: "put") do %>
-  <div class="text-right"><%= submit_tag("Es tu turno #{@player} ¡ataca!", class: 'btn btn-primary btn-lg btn-block') %></div>
-<% end %>
-<%= form_tag(@give_up, method: "put") do %>
-  <div class="text-right"><%= submit_tag("Me rindo :'(", class: 'btn btn-warning btn-lg btn-block') %></div>
-<% end %>
+  </div>
+  <div>
 
 
+
+
+    <% if session[:turn] %>
+
+    <% @turn = "/games/attack_p2" %>
+    <% @give_up = "/games/give_up_p1" %>
+    <% @player = session[:nickname1] %>
+
+    <% else %>
+    <% @turn = "/games/attack_p1" %>
+    <% @give_up = "/games/give_up_p2" %>
+    <% @player = session[:nickname2] %>
+    <% end %>
+
+    <%= form_tag(@turn, method: "put") do %>
+    <div class="text-right">
+      <%= submit_tag("Es tu turno #{@player} ¡ataca!", class: 'btn btn-primary btn-lg btn-block') %>
+    </div>
+    <% end %>
+    <%= form_tag(@give_up, method: "put") do %>
+    <div class="text-right">
+      <%= submit_tag("Me rindo :'(", class: 'btn btn-warning btn-lg btn-block') %>
+    </div>
+    <% end %>
+    <%- else %>
+
+    <h2>la victoria es tuya
+      <%= @winner %> <span class="glyphicon glyphicon-flag" aria-hidden="true"></h2>
+
+    <%= link_to "<h1>Nuevo juego</h1>".html_safe, new_game_path %>
+    <%- end %>
