@@ -19,7 +19,7 @@
                     </div>
                     <div class="panel-body">
                       <ul>
-                        <% User.all.order(score: :desc).each do |user| %>
+                        <% User.all.order(score: :desc).take(5).each do |user| %>
                           <li><%= user.nickname%>: <%= user.score%></li>
                         <% end %>
                       </ul>
