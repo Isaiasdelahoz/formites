@@ -18,7 +18,11 @@
                         <h3 class="panel-title">Mejores jugadores</h3>
                     </div>
                     <div class="panel-body">
-                        <%= User.all.sort_by(&:score).reverse %>
+                      <ul>
+                        <% User.all.order(score: :desc).each do |user| %>
+                          <li><%= user.nickname%>: <%= user.score%></li>
+                        <% end %>
+                      </ul>
                     </div>
                 </div>
                 <div class="panel panel-default">
